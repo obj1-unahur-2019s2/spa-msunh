@@ -1,0 +1,108 @@
+import personas.*
+
+test "olivia" {
+
+	assert.equals(6,olivia.gradoDeConcentracion())
+	olivia.recibirMasajes()
+
+	assert.equals(9,olivia.gradoDeConcentracion())
+
+	olivia.discute()
+	assert.equals(8,olivia.gradoDeConcentracion())
+
+}
+
+test "bruno"{
+	
+	
+bruno.esFeliz(false)
+bruno.tieneSed(true)
+bruno.recibirMasajes()
+assert.that(bruno.esFeliz())
+
+bruno.tieneSed(false)
+
+//se da un banio de vapor
+bruno.darseUnBanioDeVapor()
+assert.equals(54500, bruno.peso())
+assert.that(bruno.tieneSed())
+
+//toma agua
+bruno.tomarAgua()
+assert.notThat(bruno.tieneSed())
+
+//come fideos
+bruno.comerFideos()
+assert.equals(54750, bruno.peso())
+assert.that(bruno.tieneSed())
+
+//bruno corre
+bruno.correr()
+assert.equals(54450, bruno.peso())
+
+//ve el noticiero
+bruno.verElNoticiero()
+assert.notThat(bruno.esFeliz())
+
+
+
+//bruno esta perfecto?
+//bruno[esFeliz=false, peso=54450, tieneSed=true]
+
+assert.notThat(bruno.estaPerfecto())
+
+//bruno esta perfecto!
+bruno.esFeliz(true)
+bruno.tieneSed(false)
+assert.that(bruno.estaPerfecto())
+
+
+//bruno[esFeliz=true, peso=54450, tieneSed=false]
+//medio dia en casa
+bruno.mediodiaEnCasa()
+
+//bruno[esFeliz=false, peso=54700, tieneSed=false]
+assert.notThat(bruno.esFeliz())
+assert.equals(54700,bruno.peso())
+assert.notThat(bruno.tieneSed())
+
+}
+
+test "ramiro recibir masajes"{
+	ramiro.contractura(0)
+	ramiro.recibirMasajes()
+	assert.equals(0,ramiro.nivelDeContractura())
+	
+	ramiro.contractura(1)
+	ramiro.recibirMasajes()
+	assert.equals(0,ramiro.nivelDeContractura())
+	
+	ramiro.jugarAlPaddle()
+	ramiro.recibirMasajes()
+	assert.equals(1,ramiro.nivelDeContractura())
+	
+	
+}
+
+test " ramiro recibir masajes cheto"{
+	
+	ramiro.contractura(0)
+	ramiro.recibirMasajesCheto()
+	assert.equals(0,ramiro.nivelDeContractura())
+	
+	ramiro.contractura(1)
+	ramiro.recibirMasajesCheto()
+	assert.equals(0,ramiro.nivelDeContractura())
+	
+	ramiro.jugarAlPaddle()
+	ramiro.recibirMasajesCheto()
+	assert.equals(1,ramiro.nivelDeContractura())
+	
+}
+
+test "ramiro dia de trabajo"{
+	ramiro.diaDeTrabajo()
+	assert.that(ramiro.pielGrasosa())
+	assert.equals(2,ramiro.nivelDeContractura())
+	
+}

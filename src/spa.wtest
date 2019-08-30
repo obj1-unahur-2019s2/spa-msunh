@@ -1,0 +1,59 @@
+import personas.*
+test "atiende a ramiro" {
+
+//ramiro[pielGrasosa=false, contractura=0]
+	ramiro.comerseUnBigMac()
+	ramiro.jugarAlPaddle()
+
+	spa.atender(ramiro)
+	assert.notThat(ramiro.pielGrasosa()) 
+	assert.equals(1,ramiro.contractura())
+
+
+}
+
+test "atiende a olivia"{
+	spa.atender(olivia)
+	assert.equals(9,olivia.gradoDeConcentracion())
+
+	
+}
+
+test "atiende a bruno"{
+	//bruno[esFeliz=true, peso=55000, tieneSed=false]
+	spa.atender(bruno)
+	assert.equals(54500, bruno.peso())
+	assert.that(bruno.tieneSed())
+
+	
+}
+
+test "premio para el que vuelve enseguida"{
+	
+	//ramiro
+	ramiro.diaDeTrabajo()
+	ramiro.diaDeTrabajo()
+	ramiro.diaDeTrabajo()
+	ramiro.diaDeTrabajo()
+	ramiro.diaDeTrabajo()
+	assert.that(ramiro.pielGrasosa())
+	assert.equals(10,ramiro.nivelDeContractura())
+	
+	spa.atender(ramiro)
+	assert.notThat(ramiro.pielGrasosa())
+	assert.equals(8,ramiro.nivelDeContractura())
+
+	spa.atender(ramiro)
+	assert.notThat(ramiro.pielGrasosa())
+	assert.equals(4,ramiro.nivelDeContractura())
+	
+
+	//despues olivia
+	assert.equals(6, olivia.gradoDeConcentracion())
+	spa.atender(olivia)
+	assert.equals(9, olivia.gradoDeConcentracion())
+	//olivia vuelve dos veces seguidas
+	spa.atender(olivia)
+	assert.equals(15, olivia.gradoDeConcentracion())
+	
+}
