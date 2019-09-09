@@ -1,12 +1,30 @@
+import spa.*
 
 object olivia {
+	var concentracion = 6
+	
+	method gradoDeConcentracion(){
+		return concentracion	
+	}
+	
+	method recibirMasajes(){
+		concentracion +=3
+	}
+	
+	method discute(){
+		concentracion -=1
+	}
+	
+	method darseUnBanioDeVapor(){ 
+		
+	}
 }
 
 
 object bruno {
-	var esFeliz = true
-	var tieneSed = false
-	var peso = 55000
+	var property esFeliz = true
+	var property tieneSed = false
+	var property peso = 55000
 	
 	method esFeliz() { return esFeliz }
 	method tieneSed() { return tieneSed }
@@ -19,22 +37,61 @@ object bruno {
 	method correr() { peso -= 300 }
 	method verElNoticiero() { esFeliz = false }
 	
-	method estaPerfecto() { return self.esFeliz() and not self.tieneSed() and self.peso().between(50000, 70000) }
+	method estaPerfecto() { 
+		return self.esFeliz() and 
+		not self.tieneSed() and 
+		self.peso().between(50000, 70000)
+	}
 	method mediodiaEnCasa() { 
-		self.comerFideos()
-		// y que mas?
+		self.comerFideos();
+		self.tomarAgua(); 
+		self.verElNoticiero()
+		
 	}
 }
 
 object ramiro {
-	method recibirMasajes() { /*... completar ...*/ }
-	method darseUnBanioDeVapor() { /*... completar ...*/ }
-	method comerseUnBigMac() { /*... completar ...*/ }
-	method bajarALaFosa() { /*... completar ...*/ }
-	method jugarAlPaddle() { /*... completar ...*/ }
+	var property contractura = 0 
+	var property pielGrasosa = false
+
+//Funciona, pero me pregunto: ¿es correcta esta forma?
+// 	
+	method recibirMasajes() { 
+		if (contractura == 0) { contractura = 0}
+		if (contractura == 1) {contractura = 0} 
+		if (contractura > 1) {contractura -=2}
+	
+	}  
+
+	//metodo cheto
+	method recibirMasajesCheto() {
+		contractura = 0.max(contractura - 2)
+	}
+	
+	method nivelDeContractura(){
+		return contractura
+	}
+	
+	method darseUnBanioDeVapor() { 
+		pielGrasosa=false
+	}
+	
+	method comerseUnBigMac() {
+		pielGrasosa = true
+	}
+	
+	method bajarALaFosa() { 
+		pielGrasosa = true ; contractura += 1	
+	}	
+	
+	method jugarAlPaddle() { 
+		contractura += 3
+	}
 	
 	method diaDeTrabajo() { 
-		/*... completar ...*/
+		self.bajarALaFosa();
+		self.comerseUnBigMac();
+		self.bajarALaFosa()
 	}
 }
 
